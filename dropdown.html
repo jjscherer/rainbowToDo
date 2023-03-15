@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Input List</title>
+</head>
+<style>
+    li {
+        margin-bottom: 10px;
+    }
+    select {
+        margin-left: 10px;
+    }
+</style>
+<body>
+    <form>
+        <label for="input"> Enter things to do:</label> 
+        <input type="text" id="input" name="input">
+        <button type="button" onclick="addToList()">Add ITem</button>
+    </form>
+    
+    <h3>Items List: </h3>
+    <ol id="list"></ol>
+
+    <script>
+        var list = document.getElementById("list");
+        var count = 1;
+        function addToList() {
+            var input = document.getElementById("input").value;
+            if (input !== "") {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(input));
+                var select = document.createElement('select');
+                select.name='myselect';
+                var option1 = document.createElement('option');
+                option1.value='One';
+                option1.text = '1';
+                select.appendChild(option1);
+                var option2 = document.createElement('option');
+                option2.value = 'Two';
+                option2.text = '2';
+                select.appendChild(option2);
+                var option3 = document.createElement('option');
+                option3.value = 'Three';
+                option3.text = '3';
+                select.appendChild(option3);
+                li.appendChild(select);
+                list.appendChild(li);
+                count++;
+                document.getElementById("input").value = "";
+            }
+        }
+    </script>
+</body>
+</html>
