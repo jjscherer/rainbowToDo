@@ -3,6 +3,10 @@ function CalendarDays(props){
     let weekdayOfFirstDay = firstDayOfMonth.getDay();
     let currentDays = [];
 
+    const db_get = () => {
+        return 5;
+    }
+
     for(let day = 0; day < 42; day++){
         if(day === 0 && weekdayOfFirstDay === 0){
             firstDayOfMonth.setDate(firstDayOfMonth.getDate() - 7);
@@ -18,7 +22,8 @@ function CalendarDays(props){
             month: firstDayOfMonth.getMonth(),
             number: firstDayOfMonth.getDate(),
             selected: (firstDayOfMonth.toDateString() === props.day.toDateString()),
-            year: firstDayOfMonth.getFullYear()
+            year: firstDayOfMonth.getFullYear(),
+            tasks: db_get()
         }
 
         currentDays.push(calendarDay);
@@ -28,11 +33,21 @@ function CalendarDays(props){
         <div className='table-content'>
             {
                 currentDays.map((day) => {
+                    let tasks = [];
+                    for(let i = 0; i < day.tasks; i++){
+                        tasks.push(<>&#x2022;</>);
+                    }
+
                     return (
-                        <div className={"calendar-day" + (day.currentMonth ? " current" : "") + (day.selected ? " selected" : "")}
-                            onClick={() => props.changeCurrentDay(day)}>
-                            <p>{day.number}</p>
-                        </div>
+                        <>
+                            <div className={"calendar-day" + (day.currentMonth ? " current" : "") + (day.selected ? " selected" : "")}
+                                onClick={() => props.changeCurrentDay(day)}>
+                                <p>{day.number}</p>
+                                <div className="task-dots">
+                                    {tasks}
+                                </div>
+                            </div>
+                        </>
                     )
                 })
             }
