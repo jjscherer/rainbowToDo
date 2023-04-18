@@ -1,5 +1,5 @@
 .calendar {
-    width: 900px;
+    width: 75%;
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -8,7 +8,7 @@
 
 .calendar-header {
     height: 100px;
-    width: 100%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -26,6 +26,7 @@
 .table-header{
     height: 52px;
     width:100%;
+    background-color: lightgray;
     display:flex;
     align-items: center;
     justify-content: space-around;
@@ -34,16 +35,17 @@
 .weekday {
     width: 100%;
     text-align:center;
-    /*background-color: lightgrey;
-    border: 1px solid black;*/
+    border: 1px solid black;
 }
 
 .table-content {
     width: 100%;
-    flex-grow: 1;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    /*flex-grow: 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center;*/
     box-sizing: border-box;
 }
 

@@ -2,7 +2,6 @@ function CalendarDays(props){
     let firstDayOfMonth = new Date(props.day.getFullYear(), props.day.getMonth(), 1);
     let weekdayOfFirstDay = firstDayOfMonth.getDay();
     let currentDays = [];
-
     const db_get = () => {
         return 5;
     }
